@@ -15,3 +15,6 @@ class Storage:
             return []
         with open(self.filepath, "rb") as f:
             return pickle.load(f)
+        
+
+        ####
