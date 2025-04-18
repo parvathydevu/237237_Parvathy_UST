@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Details Summary</title>
+</head>
+<body>
+    <h1>Employee Details Summary</h1>
+    <h2>Name: {{ name }}</h2>
+    <h2>Net Salary: {{ net_salary }}</h2>
+    
+<!-- Back button to go back to the salary form -->
+ <form action="{% url 'salary_form' %}" method="get">
+    <input type="submit" value="Back to Form">
+</form>
+    
+</body>
+</html>
