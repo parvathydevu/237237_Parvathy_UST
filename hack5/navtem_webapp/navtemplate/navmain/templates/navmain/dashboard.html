@@ -1,0 +1,82 @@
+{% extends 'navmain/base.html' %}
+ 
+ 
+{% block title %}Dashboard{% endblock %}
+ 
+{% block content %}
+ 
+        <h2 class="text-2xl font-bold mb-4">Incident Overview</h2>
+ 
+ 
+        <!-- <div class="max-w-xs mx-auto mt-8">
+            <canvas id="incidentChart"></canvas>
+        </div> -->
+         
+        <div class="mx-auto mt-8 w-[700px] aspect-[4/3]">
+            <canvas id="incidentChart"></canvas>
+        </div>
+ 
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+ 
+        <script>
+ 
+            const ctx = document.getElementById('incidentChart');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: {{ labels|safe }},   // X Axis
+                    datasets: [{
+                        label: '# of Incidents',
+                        data: {{ counts|safe  }}, // Y Axis
+                        backgroundColor: ['#60a5fa', '#f97316', '#10b981', '#f43f5e'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        y: { beginAtZero: true }
+                    }
+                }
+            });
+ 
+        </script>
+<h3 class="text-xl font-semibold mt-8 mb-2">Incidents by Age Group</h3>
+<canvas id="agePieChart" style="width: 100px; height: 100px;"></canvas>
+ 
+<script>
+    const ageCtx = document.getElementById('agePieChart').getContext('2d');
+    const agePieChart = new Chart(ageCtx, {
+        type: 'pie',
+        data: {
+            labels: {{ age_labels|safe }},
+            datasets: [{
+                label: 'Incidents by Age Group',
+                data: {{ age_counts|safe }},
+                backgroundColor: [
+                    '#FF6384', // Children
+                    '#36A2EB', // Young Adults
+                    '#FFCE56', // Adults
+                    '#9966FF'  // Seniors
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                },
+                title: {
+                    display: true,
+                    text: 'Incidents by Age Group'
+                }
+            }
+        }
+    });
+</script>
+ 
+ 
+{% endblock %}
