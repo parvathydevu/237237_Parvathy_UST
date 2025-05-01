@@ -1,0 +1,18 @@
+{% extends "IBBank/base.html" %}
+{% block content %}
+<div class="dashboard-container">
+  <h2>Financial Tools</h2>
+  <ul>
+    <li><a href="{% url 'emi_calculator' %}">EMI Calculator</a></li>
+    <li><a href="{% url 'sip_calculator' %}">SIP Calculator</a></li>
+    <li><a href="{% url 'fd_calculator' %}">FD Calculator</a></li>
+    <li><a href="{% url 'rd_calculator' %}">RD Calculator</a></li>
+    <li><a href="{% url 'retirement_calculator' %}">Retirement Savings Estimator</a></li>
+    <li><a href="{% url 'home_loan_eligibility' %}">Home Loan Eligibility Estimator</a></li>
+    <li><a href="{% url 'credit_card_interest' %}">Credit Card Interest Calculator</a></li>
+    <li><a href="{% url 'taxable_income' %}">Taxable Income Calculator</a></li>
+    <li><a href="{% url 'budget_planner' %}">Budget Planner</a></li>
+    <li><a href="{% url 'net_worth_calculator' %}">Net Worth Calculator</a></li>
+  </ul>
+</div>
+{% endblock %}
