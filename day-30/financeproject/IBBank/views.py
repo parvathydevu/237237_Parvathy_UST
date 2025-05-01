@@ -75,6 +75,7 @@ def withdraw(request):
         form = WithdrawForm()
     return render(request, 'IBBank/withdraw.html', {'form': form})
 #access financialtools
+@login_required
 def financial_tools(request):
     return render(request, 'IBBank/financial-tools.html')
 
